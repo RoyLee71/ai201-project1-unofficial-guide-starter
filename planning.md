@@ -11,6 +11,8 @@
 
 <!-- What domain did you choose? Why is this knowledge valuable and hard to find through official channels? -->
 
+Off-campus housing is one of the most consequential decisions a college student makes, yet the information they need most like: how landlords actually respond to maintenance requests, which lease clauses cause problems, what hidden costs to expect; lives almost entirely in student conversations, newspaper threads, and Reddit posts rather than in anything a university publishes. Official housing pages list available properties but don't tell which landlords ignore mold complaints for six months or that your deposit disappears if you miss a cleaning clause buried on page 4 of the lease. This system makes that hard-won peer knowledge searchable and answerable.
+
 ---
 
 ## Documents
@@ -18,18 +20,18 @@
 <!-- List your specific sources: URLs, subreddit names, forum threads, or file descriptions.
      Aim for at least 10 sources that together cover different subtopics or perspectives within your domain. -->
 
-| # | Source | Description | URL or location |
-|---|--------|-------------|-----------------|
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
-| 4 | | | |
-| 5 | | | |
-| 6 | | | |
-| 7 | | | |
-| 8 | | | |
-| 9 | | | |
-| 10 | | | |
+| #   | Source | Description | URL or location |
+| --- | ------ | ----------- | --------------- |
+| 1   |        |             |                 |
+| 2   |        |             |                 |
+| 3   |        |             |                 |
+| 4   |        |             |                 |
+| 5   |        |             |                 |
+| 6   |        |             |                 |
+| 7   |        |             |                 |
+| 8   |        |             |                 |
+| 9   |        |             |                 |
+| 10  |        |             |                 |
 
 ---
 
@@ -71,13 +73,13 @@
      is right or wrong. "What are good dining halls?" is too vague.
      "What do students say about wait times at [dining hall name] during lunch?" is testable. -->
 
-| # | Question | Expected answer |
-|---|----------|-----------------|
-| 1 | | |
-| 2 | | |
-| 3 | | |
-| 4 | | |
-| 5 | | |
+| #   | Question | Expected answer |
+| --- | -------- | --------------- |
+| 1   |          |                 |
+| 2   |          |                 |
+| 3   |          |                 |
+| 4   |          |                 |
+| 5   |          |                 |
 
 ---
 
