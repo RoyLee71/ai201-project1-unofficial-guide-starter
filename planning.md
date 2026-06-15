@@ -160,6 +160,13 @@ before choosing an embedding model:
    sub-topic and source, giving the LLM redundant context instead of a range of student
    perspectives.
 
+3. **Vocabulary overlap between landlord and deposit articles causes retrieval
+   confusion on maintenance queries.** The security deposit article and the
+   landlord advice article share terms like "landlord," "lease," "students,"
+   and "apartment," so a query about maintenance response time surfaces deposit
+   content as the top result. A potential fix is hybrid search (BM25 + semantic)
+   or metadata filtering by sub-topic — noted for the evaluation report.
+
 ---
 
 ## Architecture
@@ -239,6 +246,7 @@ navigation text, HTML entities, and bylines are removed. I will then print 5 ran
 and verify each is readable, self-contained, and under 400 characters.
 
 **Milestone 3 — Ingestion and chunking:**
+
 
 **Milestone 4 — Embedding and retrieval:**
 
