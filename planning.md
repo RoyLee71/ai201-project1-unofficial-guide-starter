@@ -138,14 +138,6 @@ before choosing an embedding model:
 | 4   | What advice do students give about signing a lease for the first time?               | Students advise reading the entire lease before signing, paying close attention to renewal clauses (which can allow landlords to raise rent), subletting rules, and security deposit conditions. Several sources recommend using a university's free legal review service. Getting all promises from the landlord in writing not just verbally, is consistently emphasized. |
 | 5   | What pest problems do students most commonly report in off-campus apartments?        | Mice and cockroaches are the most frequently reported pests. Penn students at Campus Apartments described mice present on move-in day and sudden roach infestations. Mold is also common, particularly in bathrooms of older buildings, and is worsened by poor ventilation. Students are advised to report any pest issue immediately in writing.                          |
 
-| #   | Question | Expected answer |
-| --- | -------- | --------------- |
-| 1   |          |                 |
-| 2   |          |                 |
-| 3   |          |                 |
-| 4   |          |                 |
-| 5   |          |                 |
-
 ---
 
 ## Anticipated Challenges
@@ -228,6 +220,23 @@ Five stages in sequence:
      "I'll use AI to help me code" is not a plan.
      "I'll give Claude my Chunking Strategy section and ask it to implement chunk_text()
      with my specified chunk size and overlap" is a plan. -->
+
+*What I will give Claude:* The full Documents table from this file (12 sources, types, URLs),
+the Chunking Strategy section (400-char chunks, 100-char overlap, paragraph-first
+RecursiveCharacterTextSplitter), and the architecture diagram showing the ingestion stage
+labeled "requests + BeautifulSoup, pdfplumber for PDFs."
+
+*What I will ask for:* Implement three functions in `ingest.py`: (1) `load_documents(folder)`
+that reads all `.txt` files in `/documents` and returns a list of
+`{"text": raw_text, "source": filename}` dicts, (2) `clean_text(text)` that strips HTML tags
+using BeautifulSoup, removes blank lines, collapses whitespace, and strips common navigation
+boilerplate patterns, and (3) `chunk_documents(docs)` using LangChain's
+`RecursiveCharacterTextSplitter(chunk_size=400, chunk_overlap=100)` that returns a flat list
+of `{"text": chunk, "source": filename}` dicts.
+
+*What I will verify:* I will print one cleaned document before chunking and confirm that
+navigation text, HTML entities, and bylines are removed. I will then print 5 random chunks
+and verify each is readable, self-contained, and under 400 characters.
 
 **Milestone 3 — Ingestion and chunking:**
 
