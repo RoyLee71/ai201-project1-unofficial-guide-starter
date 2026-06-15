@@ -228,6 +228,9 @@ Five stages in sequence:
      "I'll give Claude my Chunking Strategy section and ask it to implement chunk_text()
      with my specified chunk size and overlap" is a plan. -->
 
+
+**Milestone 3 — Ingestion and chunking:**
+
 *What I will give Claude:* The full Documents table from this file (12 sources, types, URLs),
 the Chunking Strategy section (400-char chunks, 100-char overlap, paragraph-first
 RecursiveCharacterTextSplitter), and the architecture diagram showing the ingestion stage
@@ -245,10 +248,41 @@ of `{"text": chunk, "source": filename}` dicts.
 navigation text, HTML entities, and bylines are removed. I will then print 5 random chunks
 and verify each is readable, self-contained, and under 400 characters.
 
-**Milestone 3 — Ingestion and chunking:**
 
 
 **Milestone 4 — Embedding and retrieval:**
+*What I will give Claude:* The Retrieval Approach section (all-MiniLM-L6-v2, ChromaDB,
+top-k=5) and the architecture diagram showing the embedding and vector store stages labeled
+with their tools.
+
+*What I will ask for:* Implement two functions in `retrieval.py`: (1) `build_index(chunks)`
+that loads `SentenceTransformer("all-MiniLM-L6-v2")`, embeds all chunk texts, creates a
+ChromaDB collection named `"offcampus_housing"` with persistence, and upserts all chunks with
+their embeddings and source metadata, and (2) `retrieve(query, k=5)` that embeds the query,
+queries the collection, and returns a list of `{"text": chunk, "source": filename, "distance":
+score}` dicts for the top-k results.
+
+*What I will verify:* I will run `retrieve()` on 3 of my 5 evaluation questions, print the
+returned chunks and distance scores, and confirm the top results are visibly on-topic and that
+distance scores are below 0.5.
 
 **Milestone 5 — Generation and interface:**
+*What I will give Claude:* The grounding requirement (answers must come only from retrieved
+chunks, no general training knowledge, source citation required in every response), the desired
+output format (`{"answer": str, "sources": list[str]}`), and the Gradio skeleton from the
+project guide showing a Blocks layout with a Textbox input, Button, and two Textbox outputs.
+
+*What I will ask for:* Implement two things: (1) an `ask(question)` function in `query.py`
+that calls `retrieve(question, k=5)`, builds a system prompt enforcing strict grounding
+(answer only from the documents below; if the answer isn't in the documents, say "I don't
+have enough information on that"), calls `Groq(api_key=os.getenv("GROQ_API_KEY"))` with model
+`llama-3.3-70b-versatile`, and returns `{"answer": response_text, "sources": [list of unique
+source filenames from retrieved chunks]}`, and (2) a `app.py` using the Gradio skeleton wired
+to `ask()`.
+
+*What I will verify before running:* I will read the generated system prompt and confirm it
+uses language like "only using the provided documents" and "do not use outside knowledge"
+not softer language like "try to use the documents." I will also confirm that source names are
+appended programmatically from the retrieved metadata, not left entirely to the LLM to
+generate.
 ```
